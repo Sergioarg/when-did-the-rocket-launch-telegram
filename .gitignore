@@ -1,0 +1,4 @@
+temp-project/
+.venv
+venv/
+.env
