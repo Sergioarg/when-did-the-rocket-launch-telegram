@@ -2,3 +2,4 @@ temp-project/
 .venv
 venv/
 .env
+__pycache__/
