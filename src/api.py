@@ -7,9 +7,6 @@ VIDEO_NAME = getenv(
 )
 
 class FrameXAPI:
-    def __init__(self):
-        self.api_base = API_BASE
-        self.video_name = VIDEO_NAME
 
     def get_frames_data(self) -> int:
         """Return the number of frames avalible to search
@@ -18,7 +15,7 @@ class FrameXAPI:
             int: count of total frames
         """
         frames = 0
-        response = get(self.api_base)
+        response = get(API_BASE)
 
         if response.status_code == 200:
             r = response.json()
@@ -28,7 +25,7 @@ class FrameXAPI:
 
         return frames
 
-    def get_link_frame(self, frame: int) -> str:
+    def get_link_frame(self, frame: int, total_frames: int) -> str:
         """Create a link whit the frame specified
 
         Args:
@@ -37,16 +34,10 @@ class FrameXAPI:
         Returns:
             str: url whit the link of the frame
         """
-        if frame < 0 or frame > frames:
-            print(f"Error, frame value must be between 0 and {frames}")
+
+        if frame < 0 or frame > total_frames:
+            print(f"Error, frame value must be between 0 and {total_frames}")
             return None
 
-        frames = self.get_frames_data()
-
-        url = f'{self.api_base}/{self.video_name}/frame/{frame}'
+        url = f'{API_BASE}/{VIDEO_NAME}/frame/{frame}'
         return url
-
-
-api = FrameXAPI()
-frames = api.get_frames_data()
-print(f'Frames: {frames}')
