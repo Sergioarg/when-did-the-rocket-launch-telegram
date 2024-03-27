@@ -12,8 +12,10 @@ class FrameXAPI:
         self.video_name = VIDEO_NAME
 
     def get_frames_data(self) -> int:
-        """
-        Get the number of frames from API
+        """Return the number of frames avalible to search
+
+        Returns:
+            int: count of total frames
         """
         response = get(self.api_base)
 
@@ -26,46 +28,23 @@ class FrameXAPI:
             return 0
 
     def get_link_frame(self, frame: int) -> str:
+        """Create a link whit the frame specified
+
+        Args:
+            frame (int): frame to search at api
+
+        Returns:
+            str: url whit the link of the frame
         """
-        Create a link with the frame to show
-        """
+        frames = self.get_frames_data()
+
+        if frame < 0 and frame > frames:
+            print(f"Error, the limit is {frames}")
+
         url = f'{self.api_base}/{self.video_name}/frame/{frame}'
         return url
 
 
-api = FrameXAPI(API_BASE)
+api = FrameXAPI()
 frames = api.get_frames_data()
 print(f'Frames: {frames}')
-
-
-# def binary_search(array, target):
-#     low = 0
-#     high = len(array) - 1
-
-#     if len(array) < 1:
-#         raise ValueError("Cannot bissect an empty array")
-
-#     while low <= high:
-#         mid = (low + high) // 2
-#         print(f"¿Es el valor {array[mid]} el objetivo? (y/n)")
-#         user_input = input().lower()
-
-#         if user_input == "y":
-#             return mid
-#         elif user_input == "n":
-#             if array[mid] < target:
-#                 low = mid + 1
-#             else:
-#                 high = mid - 1
-#         else:
-#             print("Entrada inválida. Por favor, responda con 'y' o 'n'.")
-#     return -1
-
-# array = list(range(1, frames))
-# target = frames
-
-# index = binary_search(array, target)
-
-# frame_link = api.get_link_frame(index)
-
-# print(f'Link: {frame_link}')
