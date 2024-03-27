@@ -1,4 +1,7 @@
 class LaunchService:
+    """
+    Service to encapsulate the logic of the moment of the launch
+    """
 
     def __init__(self, api):
         self.api = api
