@@ -17,15 +17,16 @@ class FrameXAPI:
         Returns:
             int: count of total frames
         """
+        frames = 0
         response = get(self.api_base)
 
         if response.status_code == 200:
             r = response.json()
-            self.frames = r[0]['frames']
-            return self.frames
+            frames = r[0]['frames']
         else:
             print("Error to get the API")
-            return 0
+
+        return frames
 
     def get_link_frame(self, frame: int) -> str:
         """Create a link whit the frame specified
@@ -36,10 +37,11 @@ class FrameXAPI:
         Returns:
             str: url whit the link of the frame
         """
-        frames = self.get_frames_data()
+        if frame < 0 or frame > frames:
+            print(f"Error, frame value must be between 0 and {frames}")
+            return None
 
-        if frame < 0 and frame > frames:
-            print(f"Error, the limit is {frames}")
+        frames = self.get_frames_data()
 
         url = f'{self.api_base}/{self.video_name}/frame/{frame}'
         return url
