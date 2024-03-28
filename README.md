@@ -57,8 +57,8 @@ src/
 
 ### How to use the Rocket Launch Bot
 
+To operate the bot, you can use the following commands `/start` and `/help`, you can find the bot in this link.
 - Rocket Launch Bot: `t.me/rocketlaunchtestbot`
-  To operate the bot, you can use the following commands `/start` and `/help`, you can find the bot in this link.
 
 #### Commands
 
