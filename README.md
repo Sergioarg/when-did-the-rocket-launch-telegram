@@ -1,11 +1,11 @@
 # When Did The Rocket Launch Telegram
 
-This is the solution to the telegram bot exercise with the objective of asking the user when the rocket took off from the [Falcon Heavy Test Flight](https://www.youtube.com/watch?v=wbSwFU6tY1c) video provided by the FrameX API.
+This is the solution to the telegram bot exercise with the objective of asking the user when the rocket took off from the [Falcon Heavy Test Flight](https://www.youtube.com/watch?v=1wbSwFU6tY1c) video provided by the FrameX API, you can find the in this link[Rocket Launch Bot](t.me/rocketlaunchtestbot).
 
 ## Table of contents
-
 - [How to use](#how-to-use)
 - [Solution](#solution)
+- [Rocket Launch Bot](#rocket-launch-bot)
 
 ### How to use
 
@@ -51,3 +51,19 @@ src/
 | [api.py](src/api.py) | Abstracts the main logic of interactions with the FrameX API. |
 | [bot.py](src/bot.py) | Abstracts the main logic of interactions with telegram bot |
 | [launch_service.py](src/launch_service.py) | Abstracts the main logic to obtain the frame where the rocket takes off. |
+
+### [Rocket Launch Bot](t.me/rocketlaunchtestbot)
+To operate the bot, you can use the following commands `/start` and `/help`.
+
+#### Commands
+- `/start`
+This command starts the search of the frames where it will ask the user, if the rocket has already taken off or not, with different images.
+![screen_strart](screenshots/screen_start.png)
+
+The final result should be like the next image whit the frame of the moment that the rocket takes off.
+
+![screen_strart_end](screenshots/screen_start_end.png)
+
+- `/help`
+Shows the user the available bot commands.
+![screen_help](screenshots/screen_help.png)

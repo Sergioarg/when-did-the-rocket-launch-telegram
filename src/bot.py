@@ -11,16 +11,7 @@ class TelegramBot:
         self.send_confirmation_options(message.chat.id)
 
     def send_help(self, message):
-        self.bot.reply_to(message, "Hi, these are some of the options you can use /start y /help")
-        self.send_menu_options(message)
-
-    def send_menu_options(self, message):
-        markup = types.InlineKeyboardMarkup(row_width=3)
-        btn_start = types.InlineKeyboardButton('Start', callback_data='start')
-        btn_launch = types.InlineKeyboardButton('Launch', callback_data='launch')
-        btn_help = types.InlineKeyboardButton('Help', callback_data='help')
-        markup.add(btn_start, btn_launch, btn_help)
-        self.bot.send_message(message.chat.id, "Choose an action:", reply_markup=markup)
+        self.bot.reply_to(message, "Hi, these are some of the options you can use /start or /help")
 
     def callback_query(self, call):
 
