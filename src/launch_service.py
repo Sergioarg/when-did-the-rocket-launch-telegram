@@ -4,7 +4,7 @@ class LaunchService:
 
     def __init__(self, api):
         self.api = api
-        self.total_frames = self.api.get_frames_data()
+        self.total_frames = self.api.get_total_frames()
         self.left = 0
         self.right = self.total_frames
         self.launch_frame = None
