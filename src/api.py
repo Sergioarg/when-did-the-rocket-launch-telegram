@@ -1,4 +1,4 @@
-""" Moduel to manage the interactions whit FrameX API"""
+""" Module to manage the interactions whit FrameX API"""
 from os import getenv
 from requests import get
 
@@ -8,33 +8,34 @@ VIDEO_NAME = getenv(
 )
 
 class FrameXAPI:
-    """ Class to manage actions of the API """
+    """ Class to manage interactions with the FrameX API. """
 
-    def get_frames_data(self) -> int:
+    def get_total_frames(self) -> int:
         """Return the number of frames avalible to search
 
         Returns:
             int: count of total frames
         """
-        frames = 0
+        total_frames = 0
         response = get(API_BASE, timeout=30)
 
         if response.status_code == 200:
             r = response.json()
-            frames = r[0]['frames']
+            total_frames = r[0]['frames']
         else:
             print("Error to get the API")
 
-        return frames
+        return total_frames
 
     def get_link_frame(self, frame: int, total_frames: int) -> str:
         """Create a link whit the frame specified
 
         Args:
-            frame (int): frame to search at api
+            frame (int): Frame for which the link will be created.
+            total_frames (int): Total number of frames available for search.
 
         Returns:
-            str: url whit the link of the frame
+            str: URL with the link to the specified frame.
         """
 
         if frame < 0 or frame > total_frames:

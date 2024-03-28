@@ -1,4 +1,4 @@
-""" Module to manage the main actions of the bot """
+""" Module TelegramBot """
 
 import telebot
 from telebot import types
@@ -11,28 +11,31 @@ class TelegramBot:
         self.bot = telebot.TeleBot(token_bot)
         self.launch_service = launch_service
 
-    def send_welcome(self, message):
-        """Send welcome to chat in telegram
+    def send_welcome(self, message: telebot.types.Message):
+        """Sends a welcome message to the user who starts the chat on Telegram.
 
         Args:
-            message: instance of class message
+            message (telebot.types.Message):
+                Instance of the Message class from the pyTelegramBotAP library.
         """
         self.bot.reply_to(message, "Hi, this bot is a PoC")
         self.send_confirmation_options(message.chat.id)
 
-    def send_help(self, message):
+    def send_help(self, message: telebot.types.Message):
         """Send help to chat in telegram using the /help
 
         Args:
-            message: instance of class message to send
+            message (telebot.types.Message):
+                Instance of the Message class from the pyTelegramBotAP library
         """
         self.bot.reply_to(message, "Hi, these are some of the options you can use /start or /help")
 
-    def callback_query(self, call):
-        """Execute this function for each user response
+    def callback_query(self, call: telebot.types.CallbackQuery):
+        """Executes logic to handle user responses to confirmation options.
 
         Args:
-            call: instance of the call
+            call (telebot.types.CallbackQuery):
+                Instance of the CallbackQuery class of the library pyTelegramBotAPI.
         """
         answer = call.data
         discard_left = answer == 'no'
@@ -51,11 +54,11 @@ class TelegramBot:
 
         self.send_confirmation_options(chat_id)
 
-    def send_confirmation_options(self, chat_id):
-        """Send interface whit image for interact whit the user
+    def send_confirmation_options(self, chat_id: int):
+        """Sends a message to the user with confirmation options to interact with the bot.
 
         Args:
-            chat_id: id of the chat to send data
+            chat_id (int): ID of the Telegram chat to which the message will be sent.
         """
         markup = types.InlineKeyboardMarkup(row_width=2)
         btn_yes = types.InlineKeyboardButton('Yes', callback_data='yes')

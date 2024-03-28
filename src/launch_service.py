@@ -1,4 +1,4 @@
-""" Service to abstract the logic of the moment of the launch """
+""" Module to abstracts the logic of the moment of the launch """
 class LaunchService:
     """ Class with methods to interact the launch service """
 
@@ -13,25 +13,27 @@ class LaunchService:
 
 
     def get_next_mid(self, left: int, right: int) -> int:
-        """Get mid of the data
+        """Calculates the middle frame index between the `left` and `right` indices.
 
         Args:
-            left (int): data to check between the option
-            right (int): data to check between the option
+            left (int): Index of the leftmost frame in the current search range.
+            right (int): Index of the rightmost frame in the current search range.
 
         Returns:
-            int: frame of the middle
+            int: Mid-frame index between `left` and `right`.
         """
 
         mid_frame = int((left + right) / 2)
 
         return mid_frame
 
-    def bitsect(self, discard_left: bool):
-        """Search according if the values is close to left or right
+    def bitsect(self, discard_left: bool) -> None:
+        """Updates the `left` and `right` indices based on whether the left or
+            right side of the current search range is discarded.
 
         Args:
-            discard_left (bool): flag to check which side dicard
+            discard_left (bool): Flag indicating whether to discard
+            the left side of the current search range.
         """
 
         if discard_left:
@@ -42,13 +44,15 @@ class LaunchService:
         self.current_frame = self.get_next_mid(self.left, self.right)
 
     def find_launch_frame(self, discard_left: bool) -> bool:
-        """find the frame where the rocket launch
+        """Find the frame where the rocket launch.
 
         Args:
-            discard_left (bool): flag to check which side dicard
+            discard_left (bool): Flag indicating whether to discard the
+            left side of the current search range.
 
         Returns:
-            bool: flag according if they find a frame
+            bool: Returns `True` if the launch frame is found, `False` otherwise.
+            frame is found, `False` otherwise.
         """
 
         if self.left < self.right and self.left - self.right == -1:

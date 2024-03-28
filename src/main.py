@@ -7,8 +7,8 @@ from launch_service import LaunchService
 load_dotenv()
 
 
-def main():
-    """Start the bot with all the requirements."""
+def main() -> None:
+    """Start the telegam bot with all the requirements."""
     api = FrameXAPI()
     token_bot = getenv("TOKEN_BOT")
     launch_service = LaunchService(api)
