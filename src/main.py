@@ -11,6 +11,11 @@ def main() -> None:
     """Start the telegam bot with all the requirements."""
     api = FrameXAPI()
     token_bot = getenv("TOKEN_BOT")
+
+    if token_bot is None:
+        print("Error: TOKEN_BOT environment variable not found.")
+        return
+
     launch_service = LaunchService(api)
     telebot = TelegramBot(api, token_bot, launch_service)
 
