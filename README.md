@@ -1,7 +1,8 @@
 # When Did The Rocket Launch Telegram
 
-This is the solution to the telegram bot exercise with the objective of asking the user when the rocket took off from the [Falcon Heavy Test Flight](https://www.youtube.com/watch?v=1wbSwFU6tY1c) video provided by the FrameX API, you can find the in this link
-<a href="t.me/rocketlaunchtestbot" target="_blank">Rocket Launch Bot</a>.
+This is the solution to the telegram bot exercise with the objective of asking the user when the rocket took off from the [Falcon Heavy Test Flight](https://www.youtube.com/watch?v=1wbSwFU6tY1c) video provided by the FrameX API, you can find the in this link:
+
+- Rocket Launch Bot: `t.me/rocketlaunchtestbot`
 
 ## Table of contents
 - [How to use](#how-to-use)
@@ -54,7 +55,8 @@ src/
 | [launch_service.py](src/launch_service.py) | Abstracts the main logic to obtain the frame where the rocket takes off. |
 
 ### How to use the Rocket Launch Bot
-To operate the bot, you can use the following commands `/start` and `/help`, you can find the bot in this <a href="t.me/rocketlaunchtestbot" target="_blank">Rocket Launch Bot</a>.
+- Rocket Launch Bot: `t.me/rocketlaunchtestbot`
+To operate the bot, you can use the following commands `/start` and `/help`, you can find the bot in this link.
 
 #### Commands
 - `/start`

@@ -1,16 +1,18 @@
+""" Module Main """
 from os import getenv
+from dotenv import load_dotenv
 from api import FrameXAPI
 from bot import TelegramBot
-from dotenv import load_dotenv
 from launch_service import LaunchService
 load_dotenv()
 
 
 def main():
+    """Start the bot with all the requirements."""
     api = FrameXAPI()
-    TOKEN_BOT = getenv("TOKEN_BOT")
+    token_bot = getenv("TOKEN_BOT")
     launch_service = LaunchService(api)
-    telebot = TelegramBot(api, TOKEN_BOT, launch_service)
+    telebot = TelegramBot(api, token_bot, launch_service)
 
     telebot.bot.message_handler(commands=['start'])(telebot.send_welcome)
     telebot.bot.message_handler(commands=['help'])(telebot.send_help)
