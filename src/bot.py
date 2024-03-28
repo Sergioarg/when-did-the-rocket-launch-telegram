@@ -44,7 +44,7 @@ class TelegramBot:
         found_frame = self.launch_service.find_launch_frame(discard_left)
 
         if found_frame:
-            self.bot.reply_to(call.message, "This is the lauch frame")
+            self.bot.reply_to(call.message, "This is the launch frame")
             self.bot.send_photo(
                 chat_id=chat_id,
                 photo=self.launch_service.image_url,
