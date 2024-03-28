@@ -4,10 +4,11 @@ This is the solution to the telegram bot exercise with the objective of asking t
 
 - Rocket Launch Bot: `t.me/rocketlaunchtestbot`
 
-## Table of contents
-- [How to use](#how-to-use)
-- [Solution](#solution)
-- [How to use the Rocket Launch Bot](#how-to-use-the-rocket-launch-bot)
+|                           Table of contents                           |
+| :-------------------------------------------------------------------: |
+|                   [How to execute](#how-to-execute)                   |
+|                         [Solution](#solution)                         |
+| [How to use the Rocket Launch Bot](#how-to-use-the-rocket-launch-bot) |
 
 ### How to execute
 
@@ -48,25 +49,27 @@ src/
 └── requirements.txt
 ```
 
-| File                 | Description                               |
-| :-------------------: | :-----------------------------------------:|
-| [api.py](src/api.py) | Abstracts the main logic of interactions with the FrameX API. |
-| [bot.py](src/bot.py) | Abstracts the main logic of interactions with telegram bot |
+|                    File                    |                               Description                                |
+| :----------------------------------------: | :----------------------------------------------------------------------: |
+|            [api.py](src/api.py)            |      Abstracts the main logic of interactions with the FrameX API.       |
+|            [bot.py](src/bot.py)            |        Abstracts the main logic of interactions with telegram bot        |
 | [launch_service.py](src/launch_service.py) | Abstracts the main logic to obtain the frame where the rocket takes off. |
 
 ### How to use the Rocket Launch Bot
+
 - Rocket Launch Bot: `t.me/rocketlaunchtestbot`
-To operate the bot, you can use the following commands `/start` and `/help`, you can find the bot in this link.
+  To operate the bot, you can use the following commands `/start` and `/help`, you can find the bot in this link.
 
 #### Commands
+
 - `/start`
-This command starts the search of the frames where it will ask the user, if the rocket has already taken off or not, with different images.
-![screen_strart](screenshots/screen_start.png)
+  This command starts the search of the frames where it will ask the user, if the rocket has already taken off or not, with different images.
+  ![screen_strart](screenshots/screen_start.png)
 
 The final result should be like the next image whit the frame of the moment that the rocket takes off.
 
 ![screen_strart_end](screenshots/screen_start_end.png)
 
 - `/help`
-Shows the user the available bot commands.
-![screen_help](screenshots/screen_help.png)
+  Shows the user the available bot commands.
+  ![screen_help](screenshots/screen_help.png)
