@@ -22,7 +22,7 @@ def main() -> None:
     telebot.bot.message_handler(commands=['start'])(telebot.send_welcome)
     telebot.bot.message_handler(commands=['help'])(telebot.send_help)
     telebot.bot.callback_query_handler(func=lambda call: True)(telebot.callback_query)
-    print('Bot started correctly!')
+    print('Bot started succesfully!')
     telebot.bot.polling(none_stop=True)
 
 if __name__ == "__main__":
