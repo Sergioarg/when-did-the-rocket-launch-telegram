@@ -8,6 +8,7 @@ class LaunchService:
         self.left = 0
         self.right = self.total_frames
         self.launch_frame = None
+        self.search_active = True
         self.current_frame = self.get_next_mid(0, self.total_frames)
         self.image_url = self.api.get_link_frame(self.current_frame, self.total_frames)
 
@@ -78,3 +79,4 @@ class LaunchService:
         self.current_frame = self.get_next_mid(0, self.total_frames)
         self.launch_frame = None
         self.image_url = self.api.get_link_frame(self.current_frame, self.total_frames)
+        self.search_active = True

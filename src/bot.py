@@ -44,6 +44,10 @@ class TelegramBot:
         self.bot.answer_callback_query(call.id, f'Answer: {answer}', cache_time=0)
         found_frame = self.launch_service.find_launch_frame(discard_left)
 
+        if not self.launch_service.search_active:
+            self.bot.reply_to(call.message, "The search process is now finished. Please send /start to start a new process.")
+            return
+
         if found_frame:
             self.bot.reply_to(call.message, "This is the launch frame")
             self.bot.send_photo(
@@ -52,6 +56,7 @@ class TelegramBot:
                 caption=f'Frame: {self.launch_service.launch_frame}'
             )
             self.launch_service.reset_state()
+            self.launch_service.search_active = False
             return
 
         self.send_confirmation_options(chat_id)
