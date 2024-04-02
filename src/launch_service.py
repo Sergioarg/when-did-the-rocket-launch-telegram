@@ -70,3 +70,11 @@ class LaunchService:
         self.image_url = self.api.get_link_frame(self.current_frame, self.total_frames)
 
         return False
+
+    def reset_state(self):
+        """Resets the state of the launch service to its initial values."""
+        self.left = 0
+        self.right = self.total_frames
+        self.current_frame = self.get_next_mid(0, self.total_frames)
+        self.launch_frame = None
+        self.image_url = self.api.get_link_frame(self.current_frame, self.total_frames)

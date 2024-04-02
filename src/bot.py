@@ -19,6 +19,7 @@ class TelegramBot:
                 Instance of the Message class from the pyTelegramBotAP library.
         """
         self.bot.reply_to(message, "Hi, this bot is a PoC")
+        self.launch_service.reset_state()
         self.send_confirmation_options(message.chat.id)
 
     def send_help(self, message: telebot.types.Message):
@@ -50,6 +51,7 @@ class TelegramBot:
                 photo=self.launch_service.image_url,
                 caption=f'Frame: {self.launch_service.launch_frame}'
             )
+            self.launch_service.reset_state()
             return
 
         self.send_confirmation_options(chat_id)
@@ -70,3 +72,5 @@ class TelegramBot:
             caption=f'Frame: {self.launch_service.current_frame}'
         )
         self.bot.send_message(chat_id, "¿Did the rocket launch yet?", reply_markup=markup)
+
+    
