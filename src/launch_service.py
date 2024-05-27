@@ -1,8 +1,10 @@
 """ Module to abstracts the logic of the moment of the launch """
+from api import FrameXAPI
+
 class LaunchService:
     """ Class with methods to interact the launch service """
 
-    def __init__(self, api):
+    def __init__(self, api: FrameXAPI):
         self.api = api
         self.total_frames = self.api.get_total_frames()
         self.left = 0
@@ -45,7 +47,8 @@ class LaunchService:
         self.current_frame = self.get_next_mid(self.left, self.right)
 
     def find_launch_frame(self, discard_left: bool) -> bool:
-        """Find the frame where the rocket launch.
+        """
+        Find the frame where the rocket launch.
 
         Args:
             discard_left (bool): Flag indicating whether to discard the
@@ -73,7 +76,7 @@ class LaunchService:
         return False
 
     def reset_state(self):
-        """Resets the state of the launch service to its initial values."""
+        """ Resets the state of the launch service to its initial values. """
         self.left = 0
         self.right = self.total_frames
         self.current_frame = self.get_next_mid(0, self.total_frames)

@@ -1,6 +1,7 @@
 """ Module to manage the interactions whit FrameX API"""
 from os import getenv
-from requests import get
+from requests import get, exceptions
+
 
 API_BASE = getenv("API_BASE", "https://framex-dev.wadrid.net/api/video")
 VIDEO_NAME = getenv(
@@ -9,6 +10,9 @@ VIDEO_NAME = getenv(
 
 class FrameXAPI:
     """ Class to manage interactions with the FrameX API. """
+    def __init__(self, video_name: str = VIDEO_NAME) -> None:
+        self.video_name = video_name
+        self.api_base = API_BASE
 
     def get_total_frames(self) -> int:
         """Return the number of frames avalible to search
@@ -17,13 +21,15 @@ class FrameXAPI:
             int: count of total frames
         """
         total_frames = 0
-        response = get(API_BASE, timeout=30)
 
-        if response.status_code == 200:
-            r = response.json()
-            total_frames = r[0]['frames']
-        else:
-            print("Error to get the API")
+        try:
+            response = get(API_BASE, timeout=30)
+            response.raise_for_status()
+            res = response.json()
+            total_frames = res[0]['frames']
+        except exceptions.HTTPError as err:
+            print(err)
+            exit(1)
 
         return total_frames
 

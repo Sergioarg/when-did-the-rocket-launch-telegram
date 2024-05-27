@@ -43,11 +43,11 @@ In order to solve the proposed PoC, I have used the OOP architecture, as this is
 
 ```bash
 src/
+├── __init__.py
 ├── api.py
 ├── bot.py
 ├── launch_service.py
-├── main.py
-└── requirements.txt
+└── main.py
 ```
 
 |                    File                    |                               Description                                |
