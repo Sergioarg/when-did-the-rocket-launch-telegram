@@ -9,6 +9,9 @@ VIDEO_NAME = getenv(
 
 class FrameXAPI:
     """ Class to manage interactions with the FrameX API. """
+    def __init__(self, video_name: str = VIDEO_NAME) -> None:
+        self.video_name = video_name
+        self.api_base = API_BASE
 
     def get_total_frames(self) -> int:
         """Return the number of frames avalible to search
@@ -20,10 +23,11 @@ class FrameXAPI:
         response = get(API_BASE, timeout=30)
 
         if response.status_code == 200:
-            r = response.json()
-            total_frames = r[0]['frames']
+            res = response.json()
+            total_frames = res[0]['frames']
         else:
-            print("Error to get the API")
+            print("Error to get the FrameX API")
+            exit(1)
 
         return total_frames
 

@@ -1,12 +1,13 @@
 """ Module TelegramBot """
-
 import telebot
 from telebot import types
+from api import FrameXAPI
+from launch_service import LaunchService
 
 class TelegramBot:
     """ Class to manage the main actions of the bot """
 
-    def __init__(self, api, token_bot, launch_service):
+    def __init__(self, api: FrameXAPI, token_bot: str, launch_service: LaunchService):
         self.api = api
         self.bot = telebot.TeleBot(token_bot)
         self.launch_service = launch_service
@@ -77,5 +78,3 @@ class TelegramBot:
             caption=f'Frame: {self.launch_service.current_frame}'
         )
         self.bot.send_message(chat_id, "¿Did the rocket launch yet?", reply_markup=markup)
-
-    
